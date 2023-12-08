@@ -1,0 +1,27 @@
+Steps To Deploy conatainerized hello world Flask application on Render
+1. Install Docker
+
+2. Clone the repo in your machine and go to Project folder
+  git clone https://github.com/Pratik199607/ATS_Task1_hello-world.git
+  cd ATS_Task1_hello-world
+
+- Testing application before building the images
+  pip install -r requirements.txt
+  python hello_world.python
+
+- After performing above steps your application should run if everything is ok. Now to test it run curl command in new tab 
+  curl http://127.0.0.1:80
+
+Note: If you get "hello world" output proceed to next steps
+3. Now Build your Docker images and push to github registry
+  docker build -t ghcr.io/USERNAME/IMAGE_NAME #Build the image
+  docker push ghcr.io/USERNAME/IMAGE_NAME #Push image to github registry
+
+- After build and Deploying image on github you can verify it on following url
+  https://github.com/USERNAME?tab=packages
+
+- Get Image url
+  docker pull ghcr.io/USERNAME/hello_world_ats:latest
+
+4. Deploy this on Render
+- Login to render -> Select New -> Select Web Service -> Deploy existing image from registry -> In Image Url Add your docker url->  ghcr.io/USERNAME/hello_world_ats:latest -> Next
